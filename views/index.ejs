@@ -1,0 +1,30 @@
+<%- include('header'); -%>
+
+<div class="box" id="heading">
+    <h1><%= listTitle %> </h1>
+</div>
+
+<div class="box">
+
+    <% newListItem.forEach((list)=> { %>
+    <form action="/delete" method="post">
+        <div class="item">
+            <!--  onchange="this.form.submit()" digunakan untuk mensubmit seluruh isi dari form
+            "value" akan mengirimkan _id dari list item data yang akan dihapus -->
+            <input name="checkboxItem" type="checkbox" onChange="this.form.submit()" value="<%= list._id %>">
+            <p><%= list.name %></p>
+        </div>
+        <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+    </form>
+    <% }) %>
+
+
+
+    <form class="item" action="/" method="post">
+        <input id="inputUser" type="text" name="newItem" placeholder="New Item" autocomplete="off" autofocus>
+        <button id="postBTN" type="submit" name="list" value="<%= listTitle %>">+</button>
+    </form>
+</div>
+
+
+<%- include('footer'); -%>
