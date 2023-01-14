@@ -15,9 +15,9 @@ app.use(express.static("public"));
 
 app.set("view engine", "ejs");
 
-const PASSWORD = process.env.MONGODB_PASSWORD
+const URL = process.env.MONGODB_URI
 
-mongoose.connect(`mongodb+srv://admin-tomi:${PASSWORD}@cluster0.hy3optt.mongodb.net/todolistDB`, { useNewUrlParser: true });
+mongoose.connect(URL, { useNewUrlParser: true });
 
 const itemSchema = {
     name: String
