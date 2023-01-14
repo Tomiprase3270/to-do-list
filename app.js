@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const bodyParser = require("body-parser");
 const date = require("./setDay");
@@ -14,7 +15,9 @@ app.use(express.static("public"));
 
 app.set("view engine", "ejs");
 
-mongoose.connect("mongodb+srv://admin-tomi:Test1234@cluster0.hy3optt.mongodb.net/todolistDB", { useNewUrlParser: true });
+const PASSWORD = process.env.MONGODB_PASSWORD
+
+mongoose.connect(`mongodb+srv://admin-tomi:${PASSWORD}@cluster0.hy3optt.mongodb.net/todolistDB`, { useNewUrlParser: true });
 
 const itemSchema = {
     name: String
